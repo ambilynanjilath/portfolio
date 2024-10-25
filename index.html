@@ -3,201 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Ananya Biswas</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>FeatureRefiner Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #181818;
-            color: white;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
         }
-
-        nav {
-            background-color: #20232A;
-            padding: 10px;
+        h1 {
+            font-size: 72px;
+            color: #0096FF;
             text-align: center;
         }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
+        h2, h3 {
+            color: #0056b3;
         }
-
-        nav ul li {
-            display: inline;
-            margin: 0 20px;
+        img {
+            display: block;
+            margin: 20px auto;
         }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        .home-section {
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .home-section h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-
-        .home-section p {
-            font-size: 24px;
-        }
-
-        .resume-button {
-            padding: 10px 20px;
-            background-color: #61dafb;
-            color: black;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-
-        .social-links {
-            margin-top: 30px;
-        }
-
-        .social-links a {
-            margin: 0 15px;
-            color: #61dafb;
-            text-decoration: none;
-            font-size: 20px;
-        }
-
-        .social-links a:hover {
-            color: white;
-        }
-
-        section {
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        p, ul {
-            font-size: 18px;
+        .content {
             max-width: 800px;
             margin: 0 auto;
         }
-
-        ul {
-            list-style-type: none;
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
         }
-
-        ul li {
-            margin: 10px 0;
-        }
-
-        footer {
-            padding: 20px;
-            text-align: center;
-            background-color: #20232A;
-            color: white;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav ul li {
-                display: block;
-                margin: 10px 0;
-            }
-
-            .home-section h1 {
-                font-size: 32px;
-            }
-
-            .home-section p {
-                font-size: 18px;
-            }
+        video {
+            display: block;
+            margin: 20px auto;
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#opensource">Open Source</a></li>
-        </ul>
-    </nav>
+<div class="content">
+    <h1>FeatureRefiner</h1>
+    <p>A no-code solution for performing data transformations like imputation, encoding, scaling, and feature creation, with an intuitive interface for interactive DataFrame manipulation and easy CSV export.</p>
+    <img src="_static/logo.jpeg" alt="FeatureRefiner Logo" width="200">
 
-    <!-- Home Section -->
-    <section id="home" class="home-section">
-        <h1>Ananya Biswas</h1>
-        <p>I am a passionate frontend developer</p>
-        <a href="https://drive.google.com/link_to_your_resume" class="resume-button" target="_blank">View Resume</a>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
-            <a href="https://github.com/yourprofile" target="_blank">GitHub</a>
-            <a href="https://snapcv.link/yourprofile" target="_blank">SnapCV</a>
-        </div>
-    </section>
+    <p>Welcome to the FeatureRefiner, a user-friendly interface designed to simplify data preprocessing without the need for coding. This application leverages the powerful functionalities of the FeatureRefiner package, allowing users to perform essential data transformations seamlessly.</p>
+    <p>In the ever-evolving world of data science, preprocessing is a critical step that can significantly impact the performance of your machine learning models. The FeatureRefiner App streamlines this process by offering a range of essential functionalities that make it easier to clean, transform, and prepare your data for analysis.</p>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            I am a passionate frontend developer with a focus on building responsive and interactive web applications. My goal is to create user-friendly interfaces that provide the best experience for end-users.
-        </p>
-    </section>
+    <h2>Key Features</h2>
+    <ul>
+        <li><strong>Upload Data</strong>: Quickly and easily upload your CSV files directly into the application, allowing for immediate access to your datasets.</li>
+        <li><strong>Data Transformations</strong>: Choose from a variety of transformation options to tailor your data preprocessing:
+            <ul>
+                <li><strong>Column Deletion</strong>: Remove unnecessary or irrelevant columns, helping to declutter your dataset and improve model performance.</li>
+                <li><strong>Imputation</strong>: Address missing data effectively by selecting from various strategies such as mean, median, mode, or custom values, ensuring your dataset is complete and reliable.</li>
+                <li><strong>Encoding</strong>: Transform categorical variables into numerical formats with options for label encoding and one-hot encoding, making your data suitable for machine learning algorithms.</li>
+                <li><strong>Scaling</strong>: Normalize your data using different scaling techniques to enhance model performance and ensure that all features contribute equally to the analysis.</li>
+                <li><strong>Datetime Features</strong>: Extract meaningful insights from datetime columns by generating features such as year, month, day, or day of the week, enriching your dataset for temporal analysis.</li>
+                <li><strong>Feature Creation</strong>: Easily generate polynomial features to capture complex relationships in your data, potentially improving model accuracy.</li>
+                <li><strong>Data Visualization</strong>: Utilize an interactive grid to visualize your DataFrame, allowing for easy inspection of transformations and better understanding of the underlying data.</li>
+            </ul>
+        </li>
+        <li><strong>Download Transformed Data</strong>: Once your data has been processed, export the modified DataFrame as a CSV file for further analysis or integration into your data science workflows.</li>
+    </ul>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML, CSS, JavaScript</li>
-            <li>React, Angular</li>
-            <li>Node.js, Express</li>
-            <li>Responsive Web Design</li>
-            <li>RESTful APIs</li>
-            <li>Version Control (Git, GitHub)</li>
-        </ul>
-    </section>
+    <h2>Installation and Usage</h2>
+    <p>To install <strong>FeatureRefiner</strong> in an isolated environment, follow these steps:</p>
+    <ol>
+        <li><strong>Create a virtual environment</strong>:
+            <pre><code>python -m venv feature_refiner_env</code></pre>
+        </li>
+        <li><strong>Activate the virtual environment</strong>:
+            <ul>
+                <li>On <strong>Linux/macOS</strong>, use:
+                    <pre><code>source feature_refiner_env/bin/activate</code></pre>
+                </li>
+                <li>On <strong>Windows</strong>, use:
+                    <pre><code>feature_refiner_env\Scripts\activate</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li><strong>Install FeatureRefiner</strong>:
+            <pre><code>pip install FeatureRefiner</code></pre>
+        </li>
+        <li><strong>Run the package</strong>:
+            <pre><code>run-FeatureRefiner</code></pre>
+            This command will execute the package, and its usage is demonstrated in the following video:
+            <video width="600" controls>
+                <source src="_static/demo_FeatureRefiner.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </li>
+        <li><strong>Use FeatureRefiner in your code</strong>: You can also directly use <strong>FeatureRefiner</strong> within your code. The following are the examples.</li>
+    </ol>
 
-    <!-- Education Section -->
-    <section id="education">
-        <h2>Education</h2>
-        <p>Bachelor of Technology in Computer Science from XYZ University (Year of Graduation: 2023)</p>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li><strong>Portfolio Website</strong> - A personal website showcasing my skills, experience, and projects.</li>
-            <li><strong>E-commerce App</strong> - A React-based web app for an online store with product search, filtering, and checkout features.</li>
-            <li><strong>Blog Platform</strong> - A content management system built with Node.js, Express, and MongoDB for publishing articles.</li>
-        </ul>
-    </section>
-
-    <!-- Open Source Contribution Section -->
-    <section id="opensource">
-        <h2>Open Source Contribution</h2>
-        <p>Contributed to various open-source projects, including bug fixes and feature enhancements for popular frontend libraries.</p>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>Connect with me on LinkedIn, GitHub, and SnapCV</p>
-    </footer>
+    <h2>Documentation</h2>
+    <p>For more detailed documentation, please see the following sections:</p>
+    <ul>
+        <li><a href="imputation.html">Imputation</a></li>
+        <li><a href="scaling.html">Scaling</a></li>
+        <li><a href="feature_creation.html">Feature Creation</a></li>
+        <li><a href="encoding.html">Encoding</a></li>
+        <li><a href="date_time_features.html">Date/Time Features</a></li>
+    </ul>
+</div>
 
 </body>
 </html>
