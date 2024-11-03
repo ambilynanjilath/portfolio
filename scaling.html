@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature Scaling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #0096FF;
+            font-size: 36px;
+            text-align: center;
+        }
+        h2 {
+            color: #0056b3;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: monospace;
+        }
+        code {
+            font-family: monospace;
+            color: #d63384;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Feature Scaling</h1>
+
+<p>The <strong>scaling</strong> module provides various scaling methods, each suited for different types of data. Below is a description of each scaler, including when it is most useful:</p>
+
+<h2>StandardScaler</h2>
+<p><strong>StandardScaler</strong> standardizes features by removing the mean and scaling to unit variance. It is useful when the data is normally distributed or when the features have different scales.</p>
+<p><strong>Use Case</strong>: StandardScaler is ideal when the distribution of the data is approximately Gaussian (normal) and you need to standardize the data to compare features that have different units or scales.</p>
+<pre><code># Scale the entire DataFrame using the StandardScaler
+scaled_df = normalizer.scale(df, method='standard')
+print(scaled_df)
+</code></pre>
+
+<h2>MinMaxScaler</h2>
+<p><strong>MinMaxScaler</strong> scales features to a specific range (default is [0, 1]). This is useful when you want to preserve the relationships between the features while constraining the values to a fixed range.</p>
+<p><strong>Use Case</strong>: MinMaxScaler is especially useful when your data doesn’t follow a normal distribution and you want to preserve the feature relationships. It’s also commonly used when the algorithm requires the data to be within a specific range, such as neural networks.</p>
+<pre><code># Scale the entire DataFrame using the MinMaxScaler
+scaled_df = normalizer.scale(df, method='minmax')
+print(scaled_df)
+</code></pre>
+
+<h2>RobustScaler</h2>
+<p><strong>RobustScaler</strong> scales data using statistics (like the median and interquartile range) that are robust to outliers. This is useful when your data contains outliers that you don’t want to influence the scaling too much.</p>
+<p><strong>Use Case</strong>: Use RobustScaler when the data contains outliers that could skew the results if you use a different scaling method like StandardScaler.</p>
+<pre><code># Scale specific columns in the DataFrame using the RobustScaler
+scaled_columns_df = normalizer.scale_columns(df, columns=['salary'], method='robust')
+print(scaled_columns_df)
+</code></pre>
+
+<h2>MaxAbsScaler</h2>
+<p><strong>MaxAbsScaler</strong> scales data based on its maximum absolute value, ensuring that the data lies between [-1, 1]. It is particularly useful when your data is sparse (contains many zeros).</p>
+<p><strong>Use Case</strong>: MaxAbsScaler is often used for data that contains both positive and negative values, especially in sparse datasets like those found in machine learning tasks (e.g., text data or user ratings).</p>
+<pre><code># Scale the entire DataFrame using the MaxAbsScaler
+scaled_df = normalizer.scale(df, method='maxabs')
+print(scaled_df)
+</code></pre>
+
+<h2>Normalizer (L2 Norm)</h2>
+<p><strong>Normalizer</strong> scales each sample individually to have unit norm (L2 norm). This means that the sum of the squares of each feature will equal 1.</p>
+<p><strong>Use Case</strong>: The Normalizer is useful when the magnitude of your data doesn’t matter, but you want to scale individual rows to unit norm. This is often used in text classification and clustering.</p>
+<pre><code># Scale the entire DataFrame using the Normalizer
+scaled_df = normalizer.scale(df, method='l2')
+print(scaled_df)
+</code></pre>
+
+<h2>QuantileTransformer</h2>
+<p><strong>QuantileTransformer</strong> transforms features to follow a uniform or normal distribution. It is useful when the distribution of your data is highly skewed and you want to transform it to resemble a normal or uniform distribution.</p>
+<p><strong>Use Case</strong>: Use the QuantileTransformer when the data is highly skewed, and you want to transform the features to follow a uniform or normal distribution, depending on your analysis needs.</p>
+<pre><code># Scale the entire DataFrame using the QuantileTransformer
+scaled_df = normalizer.scale(df, method='quantile')
+print(scaled_df)
+</code></pre>
+
+<h2>PowerTransformer</h2>
+<p><strong>PowerTransformer</strong> applies a power transformation (Yeo-Johnson or Box-Cox) to make data more Gaussian-like (normally distributed). It’s useful when you want to stabilize variance and minimize skewness in your data.</p>
+<p><strong>Use Case</strong>: Use PowerTransformer when your data contains negative values, or you need to make the data more symmetric and Gaussian-like, which is often required by many machine learning algorithms.</p>
+<pre><code># Scale the entire DataFrame using the PowerTransformer
+scaled_df = normalizer.scale(df, method='power')
+print(scaled_df)
+</code></pre>
+
+<h2>Scaling the Entire DataFrame</h2>
+<p>You can scale the entire DataFrame using one of the provided methods such as 'minmax', 'standard', or others.</p>
+<pre><code>import pandas as pd
+from FeatureRefiner.scaling import DataNormalize
+
+# Create a sample DataFrame
+data = {'age': [25, 30, 35], 'salary': [50000, 60000, 70000]}
+df = pd.DataFrame(data)
+
+# Initialize the DataNormalize object
+normalizer = DataNormalize()
+
+# Scale the entire DataFrame using the MinMaxScaler
+scaled_df = normalizer.scale(df, method='minmax')
+print(scaled_df)
+</code></pre>
+
+<h2>Scaling Specific Columns in a DataFrame</h2>
+<p>If you only want to scale specific columns, you can use the <code>scale_columns</code> method.</p>
+<pre><code># Scale specific columns in the DataFrame
+scaled_columns_df = normalizer.scale_columns(df, columns=['age'], method='robust')
+print(scaled_columns_df)
+</code></pre>
+
+</body>
+</html>
