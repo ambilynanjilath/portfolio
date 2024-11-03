@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missing Value Imputation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2, h3 {
+            color: #0056b3;
+        }
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            color: #d63384;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Missing Value Imputation</h1>
+    <p>The <strong>MissingValueImputation</strong> class provides several strategies to handle missing values in a dataset, such as:</p>
+    <ul>
+        <li><strong>Mean</strong>: Replaces missing values with the column's mean.</li>
+        <li><strong>Median</strong>: Replaces missing values with the column's median.</li>
+        <li><strong>Mode</strong>: Replaces missing values with the column's most frequent value.</li>
+        <li><strong>Custom Value</strong>: Allows you to specify a custom value to fill in missing data.</li>
+    </ul>
+
+    <h2>Mean Imputation</h2>
+    <p>Mean imputation fills missing values with the average of the non-missing values in a numeric column.</p>
+    <p><strong>Use Cases:</strong></p>
+    <ul>
+        <li>Suitable for normally distributed numerical data.</li>
+        <li>Effective when the dataset does not have significant outliers.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <pre><code class="language-python">import pandas as pd
+import numpy as np
+from FeatureRefiner.imputation import MissingValueImputation
+
+# Sample DataFrame with missing values
+df = pd.DataFrame({'A': [1, 2, np.nan, 4, 5]})
+imputer = MissingValueImputation(strategies={'A': 'mean'})
+imputed_df = imputer.fit_transform(df)
+print(imputed_df)</code></pre>
+
+    <h2>Median Imputation</h2>
+    <p>Replaces missing values with the median of the non-missing values in a numeric column.</p>
+    <p><strong>Use Cases:</strong></p>
+    <ul>
+        <li>Ideal for numeric data with outliers, as the median is less sensitive to extreme values.</li>
+        <li>Useful when the data is skewed.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <pre><code class="language-python"># Sample DataFrame with missing values
+df = pd.DataFrame({'B': [1, 2, np.nan, 4, 100]})
+imputer = MissingValueImputation(strategies={'B': 'median'})
+imputed_df = imputer.fit_transform(df)
+print(imputed_df)</code></pre>
+
+    <h2>Mode Imputation</h2>
+    <p>Fills missing values with the most frequent value in a categorical or discrete numeric column.</p>
+    <p><strong>Use Cases:</strong></p>
+    <ul>
+        <li>Suitable for categorical data where the most common category is a meaningful replacement.</li>
+        <li>Effective for numeric data if the data is not normally distributed.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <pre><code class="language-python"># Sample DataFrame with missing values
+df = pd.DataFrame({'C': ['cat', 'dog', np.nan, 'cat', 'dog']})
+imputer = MissingValueImputation(strategies={'C': 'mode'})
+imputed_df = imputer.fit_transform(df)
+print(imputed_df)</code></pre>
+
+    <h2>Custom Value Imputation</h2>
+    <p>This method allows you to specify a custom value to replace missing entries in a column.</p>
+    <p><strong>Use Cases:</strong></p>
+    <ul>
+        <li>Useful when a specific value is meaningful for the context of the data.</li>
+        <li>Helps when you want to avoid the bias introduced by mean/median/mode.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <pre><code class="language-python"># Sample DataFrame with missing values
+df = pd.DataFrame({'D': [1, 2, np.nan, 4, 5]})
+imputer = MissingValueImputation(strategies={'D': 0})  # Custom value of 0
+imputed_df = imputer.fit_transform(df)
+print(imputed_df)</code></pre>
+</body>
+</html>

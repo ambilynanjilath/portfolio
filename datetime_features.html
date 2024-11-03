@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DateTime Data Handling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            color: #0056b3;
+        }
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            color: #d63384;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>DateTime Data Handling</h1>
+    <p>The <strong>DateTimeExtractor</strong> class is designed to extract and parse datetime components from a specified column in a pandas DataFrame. This class facilitates the manipulation of datetime data, making it suitable for further analysis or modeling.</p>
+
+    <h2>Example:</h2>
+    <pre><code class="language-python">import pandas as pd
+from FeatureRefiner.datetime_features import DateTimeExtractor
+
+# Create a sample DataFrame
+data = {'date_column': ['01/15/2023 10:30', '2023-01-16T15:45:00', 'invalid_date']}
+df = pd.DataFrame(data)
+
+# Initialize the DateTimeExtractor
+extractor = DateTimeExtractor(df, 'date_column')</code></pre>
+
+    <h2>Date Extracting</h2>
+    <p><strong>_parse_date</strong></p>
+    <p>This private method attempts to parse a date string using multiple formats. If parsing fails for all formats, it logs a debug message and returns <code>pd.NaT</code>.</p>
+
+    <h3>Example:</h3>
+    <pre><code class="language-python">parsed_date = extractor._parse_date('01/15/2023 10:30')</code></pre>
+
+    <h2>Year Extracting</h2>
+    <p><strong>extract_year</strong></p>
+    <p>This method extracts the year from the datetime column and adds it as a new column named 'year'.</p>
+    <p><strong>Returns:</strong></p>
+    <ul>
+        <li><strong>pandas.DataFrame</strong>: DataFrame with an added 'year' column.</li>
+    </ul>
+    <p><strong>Raises:</strong></p>
+    <ul>
+        <li><code>ValueError</code>: If there is an error extracting the year.</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <pre><code class="language-python">df_with_year = extractor.extract_year()</code></pre>
+
+    <h2>Month Extracting</h2>
+    <p><strong>extract_month</strong></p>
+    <p>This method extracts the month from the datetime column and adds it as a new column named 'month'.</p>
+    <p><strong>Returns:</strong></p>
+    <ul>
+        <li><strong>pandas.DataFrame</strong>: DataFrame with an added 'month' column.</li>
+    </ul>
+    <p><strong>Raises:</strong></p>
+    <ul>
+        <li><code>ValueError</code>: If there is an error extracting the month.</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <pre><code class="language-python">df_with_month = extractor.extract_month()</code></pre>
+
+    <h2>Day Extracting</h2>
+    <p><strong>extract_day</strong></p>
+    <p>This method extracts the day from the datetime column and adds it as a new column named 'day'.</p>
+    <p><strong>Returns:</strong></p>
+    <ul>
+        <li><strong>pandas.DataFrame</strong>: DataFrame with an added 'day' column.</li>
+    </ul>
+    <p><strong>Raises:</strong></p>
+    <ul>
+        <li><code>ValueError</code>: If there is an error extracting the day.</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <pre><code class="language-python">df_with_day = extractor.extract_day()</code></pre>
+
+    <h2>Day of the Week Extracting</h2>
+    <p><strong>extract_day_of_week</strong></p>
+    <p>This method extracts the day of the week from the datetime column and adds it as a new column named 'day_of_week'.</p>
+    <p><strong>Returns:</strong></p>
+    <ul>
+        <li><strong>pandas.DataFrame</strong>: DataFrame with an added 'day_of_week' column.</li>
+    </ul>
+    <p><strong>Raises:</strong></p>
+    <ul>
+        <li><code>ValueError</code>: If there is an error extracting the day of the week.</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <pre><code class="language-python">df_with_day_of_week = extractor.extract_day_of_week()</code></pre>
+
+    <h2>All Extracting</h2>
+    <p><strong>extract_all</strong></p>
+    <p>This method extracts year, month, day, and day of the week from the datetime column and adds them as new columns.</p>
+    <p><strong>Returns:</strong></p>
+    <ul>
+        <li><strong>pandas.DataFrame</strong>: DataFrame with added 'year', 'month', 'day', and 'day_of_week' columns.</li>
+    </ul>
+    <p><strong>Raises:</strong></p>
+    <ul>
+        <li><code>ValueError</code>: If there is an error extracting any of the datetime components.</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <pre><code class="language-python">df_with_all = extractor.extract_all()</code></pre>
+</body>
+</html>

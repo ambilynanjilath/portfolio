@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature Creation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            color: #0056b3;
+        }
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            color: #d63384;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Feature Creation</h1>
+    <p>The <strong>PolynomialFeaturesTransformer</strong> class generates polynomial features from the numeric columns of a DataFrame. This transformation allows models to capture interactions between features and can enhance the predictive power of certain algorithms.</p>
+
+    <h2>Polynomial Feature Creation</h2>
+    <p><strong>Example Use Case:</strong></p>
+    <ol>
+        <li><strong>Transforming a DataFrame with Polynomial Features</strong></li>
+        <pre><code class="language-python">import pandas as pd
+from FeatureRefiner.create_features import PolynomialFeaturesTransformer
+
+# Create a sample DataFrame
+data = {
+    'height': [5.5, 6.0, 5.8],
+    'weight': [150, 180, 160]
+}
+df = pd.DataFrame(data)
+
+# Initialize the PolynomialFeaturesTransformer with degree 2
+transformer = PolynomialFeaturesTransformer(degree=2)
+
+# Transform the DataFrame to include polynomial features
+transformed_df = transformer.fit_transform(df)
+print(transformed_df)</code></pre>
+
+        <li><strong>Updating the Polynomial Degree</strong></li>
+        <p>You can also update the polynomial degree after initialization and transform the data again.</p>
+        <pre><code class="language-python"># Update the polynomial degree to 3 and transform again
+transformed_df_updated = transformer.fit_transform(df, degree=3)
+print(transformed_df_updated)</code></pre>
+    </ol>
+</body>
+</html>

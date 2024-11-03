@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature Encoding</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            color: #0056b3;
+        }
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            color: #d63384;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Feature Encoding</h1>
+    <p>The <strong>FeatureEncoding</strong> class provides methods for encoding categorical features in a DataFrame, which is essential for preparing data for machine learning algorithms. The two main encoding techniques discussed here are <strong>Label Encoding</strong> and <strong>One-Hot Encoding</strong>.</p>
+
+    <h2>Label Encoding</h2>
+    <p><strong>Label Encoding</strong> converts categorical text data into numerical data by assigning a unique integer to each category. This is especially useful for algorithms that prefer or require numerical input.</p>
+
+    <h3>How It Works:</h3>
+    <ul>
+        <li>Each unique category in a column is assigned an integer value.</li>
+        <li>For example, if a column has the categories <code>['Red', 'Blue', 'Green']</code>, these could be encoded as <code>[0, 1, 2]</code>.</li>
+    </ul>
+
+    <h3>Use Case:</h3>
+    <p>Label Encoding is typically used when:</p>
+    <ul>
+        <li>The categorical variable is ordinal (e.g., <code>Low</code>, <code>Medium</code>, <code>High</code>), where the order of categories is meaningful.</li>
+        <li>The algorithm being used can handle categorical variables represented as integers (e.g., decision trees).</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <pre><code class="language-python">import pandas as pd
+from FeatureRefiner.encoding import FeatureEncoding
+
+# Create a sample DataFrame
+data = {'Color': ['Red', 'Blue', 'Green', 'Blue']}
+df = pd.DataFrame(data)
+
+# Initialize the FeatureEncoding class
+encoder = FeatureEncoding(df)
+
+# Apply Label Encoding
+encoded_df = encoder.label_encode(columns=['Color'])
+print(encoded_df)</code></pre>
+
+    <h2>One-Hot Encoding</h2>
+    <p><strong>One-Hot Encoding</strong> converts categorical data into a binary matrix, creating a new column for each unique category. Each column contains a binary value (0 or 1) indicating the presence of the category.</p>
+
+    <h3>How It Works:</h3>
+    <ul>
+        <li>For a column with categories <code>['Red', 'Blue', 'Green']</code>, One-Hot Encoding will create three new columns: <code>Color_Blue</code>, <code>Color_Green</code>, and <code>Color_Red</code>.</li>
+        <li>If a row corresponds to the color <code>Red</code>, the values will be <code>[0, 0, 1]</code>.</li>
+    </ul>
+
+    <h3>Use Case:</h3>
+    <p>One-Hot Encoding is particularly useful when:</p>
+    <ul>
+        <li>The categorical variable is nominal (no intrinsic ordering among categories), such as colors, types, or brands.</li>
+        <li>You want to prevent the algorithm from interpreting the encoded values as having ordinal relationships.</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <pre><code class="language-python">import pandas as pd
+from FeatureRefiner.encoding import FeatureEncoding
+
+# Create a sample DataFrame
+data = {'Color': ['Red', 'Blue', 'Green', 'Blue']}
+df = pd.DataFrame(data)
+
+# Initialize the FeatureEncoding class
+encoder = FeatureEncoding(df)
+
+# Apply One-Hot Encoding
+encoded_df = encoder.one_hot_encode(columns=['Color'])
+print(encoded_df)</code></pre>
+</body>
+</html>
