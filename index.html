@@ -76,6 +76,13 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+        #demoVideo {
+            display: none;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
         .footer {
             background-color: #0056b3;
             color: #fff;
@@ -154,8 +161,9 @@
 
     <div class="video-container">
         <img src="thumbnail.png" alt="FeatureRefiner Demo" onclick="playVideo()">
-        <video id="demoVideo" controls style="display: none;">
+        <video id="demoVideo" controls>
             <source src="static/demo_FeatureRefiner.webm" type="video/webm">
+            <source src="static/demo_FeatureRefiner.mp4" type="video/mp4"> <!-- MP4 fallback -->
             Your browser does not support the video tag.
         </video>
     </div>
@@ -163,7 +171,9 @@
     <script>
         function playVideo() {
             const video = document.getElementById('demoVideo');
-            video.style.display = 'block';
+            const thumbnail = document.querySelector('.video-container img');
+            thumbnail.style.display = 'none'; // Hide the thumbnail
+            video.style.display = 'block'; // Show the video
             video.play();
         }
     </script>
